@@ -48,11 +48,15 @@ skip-magic-trailing-comma = false
 [tool.pytest.ini_options]
 minversion = "8.0"
 testpaths = ["tests"]
-# importlib mode: the module root has an Odoo-style top-level __init__.py
-# (`from . import controllers, models`) that only resolves inside an Odoo
-# addons-path import — the default "prepend" mode would try to import it
-# as a package ancestor of tests/ and fail outside Odoo. importlib mode
-# imports each test file directly by path instead.
+# pythonpath: makes `import lib.zadarma_client` resolve regardless of how
+# pytest is invoked (plain `pytest` does not add cwd to sys.path the way
+# `python -m pytest` does).
+# import-mode=importlib: the module root has an Odoo-style top-level
+# __init__.py (`from . import controllers, models`) that only resolves
+# inside an Odoo addons-path import — the default "prepend" mode would try
+# to import it as a package ancestor of tests/ and fail outside Odoo.
+# importlib mode imports each test file directly by path instead.
+pythonpath = ["."]
 addopts = "-ra -q --strict-markers --import-mode=importlib"
 markers = [
     "slow: marks tests as slow",
