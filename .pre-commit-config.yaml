@@ -40,7 +40,10 @@ repos:
     rev: v1.13.0
     hooks:
       - id: mypy
-        args: [--ignore-missing-imports]
+        # --explicit-package-bases: the repo root is an Odoo module dir with
+        # a hyphen in its name (invalid Python package identifier) — this
+        # flag stops mypy from trying to infer a dotted package name from it.
+        args: [--ignore-missing-imports, --explicit-package-bases]
         files: ^lib/
 
   # Fayna policy: no AI co-author signature (content + commit message)
