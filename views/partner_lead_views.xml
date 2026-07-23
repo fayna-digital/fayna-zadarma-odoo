@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_zadarma_call" model="ir.ui.view">
+            <field name="name">res.partner.form.zadarma.call</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                    <button name="action_zadarma_call" type="object" icon="fa-phone" class="btn btn-sm btn-secondary" invisible="not phone" title="Зателефонувати через Zadarma"/>
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="after">
+                    <button name="action_zadarma_call" type="object" icon="fa-phone" class="btn btn-sm btn-secondary" invisible="not mobile" title="Зателефонувати через Zadarma"/>
+                </xpath>
+                <div name="button_box" position="inside">
+                    <button name="action_view_zadarma_calls" type="object" class="oe_stat_button" icon="fa-phone" title="Дзвінки Zadarma">
+                        <field name="zadarma_call_count" widget="statinfo" string="Дзвінки"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+        <record id="view_crm_lead_form_zadarma_stat_button_v2" model="ir.ui.view">
+            <field name="name">crm.lead.form.zadarma.stat.button.v2</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button name="action_view_zadarma_calls" type="object" class="oe_stat_button" icon="fa-phone" title="Дзвінки Zadarma">
+                        <field name="zadarma_call_count" widget="statinfo" string="Дзвінки"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head><meta charset="utf-8"/></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:#111;line-height:1.6;margin:0;padding:0;">
+
+<!-- HERO -->
+<div style="padding:48px 48px 40px;border-bottom:1px solid #f0f0f0;">
+  <div style="display:inline-block;background:#20ac41;color:#fff;font-size:0.72em;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:18px;">Odoo 17 Module</div>
+  <h1 style="font-size:2.2em;font-weight:800;letter-spacing:-1px;color:#111;line-height:1.15;margin:0 0 14px;">Fayna <span style="color:#20ac41;">Zadarma Telephony</span></h1>
+  <p style="font-size:1.05em;color:#555;max-width:620px;margin:0 0 24px;">Повна інтеграція хмарної АТС Zadarma з Odoo 17 CRM: автозбереження дзвінків, запис розмов у chatter, click-to-call, SMS через Zadarma API, auto-lead з пропущених дзвінків.</p>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;">
+    <span style="font-size:0.82em;color:#888;"><strong style="color:#111;">Рішення:</strong> Fayna Digital для CampScout</span>
+    <span style="font-size:0.82em;color:#888;"><strong style="color:#111;">Автор:</strong> <a href="https://fayna.agency" style="color:#20ac41;font-weight:600;text-decoration:none;">Volodymyr Shevchenko</a></span>
+    <span style="font-size:0.82em;color:#888;"><strong style="color:#111;">Ліцензія:</strong> LGPL-3</span>
+    <span style="font-size:0.82em;color:#888;"><strong style="color:#111;">Версія:</strong> 17.0.1.10.0</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div style="padding:44px 48px;border-bottom:1px solid #f0f0f0;background:#fafafa;">
+  <div style="font-size:0.72em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#20ac41;margin-bottom:8px;">Можливості</div>
+  <h2 style="font-size:1.4em;font-weight:800;color:#111;margin:0 0 28px;letter-spacing:-0.3px;">Що вміє модуль</h2>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;">
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">📞</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Auto-log дзвінків</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Webhook Zadarma → створення запису у <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">zadarma.call</code>, лінк до <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">res.partner</code> і <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">crm.lead</code>.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">🎧</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Запис розмов</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Автоматичний download MP3 у chatter партнера. Зберігається permanently у Odoo filestore.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">☎️</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Click-to-call</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Кнопка «Подзвонити» у картці партнера — через Zadarma API піднімає дзвінок на внутрішньому extension.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">🎯</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Auto-lead</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Невідомий номер → <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">crm.lead</code> «Дзвінок: +xxx». Відповіли + контакт без лідa → «Розмова: {partner.name}».</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">📨</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">SMS через Zadarma</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Надсилання SMS з Odoo через Zadarma Send SMS API + статистика доставки per-partner.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">👤</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Auto-owner + fallback</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">SIP extension → <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">res.users</code>. Якщо SIP немає (пропущений) → fallback на <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">partner.user_id</code> → <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">lead.user_id</code>. First-call ownership на answered outbound.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">🎨</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Кольоровий список</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Рядок зафарбований за тегом: 🔴 спам / 🟡 пропущений / ⚪ без власника / кольори менеджерів. SCSS asset bundle.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">🔍</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Фільтри + Group By</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">17+ search filters (напрямок, статус, категорія, менеджер, дата, мої дзвінки, запис) як вбудована легенда + 5 group_by опцій.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">🔐</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">HMAC + Multi-company</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">HMAC-SHA1 verification webhook (warning mode → enforce). <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">company_id</code> + <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">ir.rule</code> для multi-company.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">💬</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Chatter + activities</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;"><code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">mail.thread</code> + <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">mail.activity.mixin</code> на формі дзвінка. Пропущений → idempotent activity «Передзвонити».</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">📥</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">Bulk import</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Import історичних дзвінків через Zadarma Statistics API — chunk-based, з progress і resume.</p>
+    </div>
+
+    <div style="flex:1;min-width:240px;border:1px solid #e8e8e8;border-radius:8px;padding:22px;background:#fff;">
+      <div style="font-size:1.5em;margin-bottom:8px;">📊</div>
+      <h4 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 6px;">SMS Analytics</h4>
+      <p style="font-size:0.85em;color:#666;margin:0;line-height:1.55;">Окреме view з розбивкою по успіху / failed / pending, рейтами доставки, історією per-phone.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FLOW -->
+<div style="padding:44px 48px;border-bottom:1px solid #f0f0f0;">
+  <div style="font-size:0.72em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#20ac41;margin-bottom:8px;">Потік</div>
+  <h2 style="font-size:1.4em;font-weight:800;color:#111;margin:0 0 28px;letter-spacing:-0.3px;">Як обробляється вхідний дзвінок</h2>
+  <div style="max-width:680px;">
+
+    <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px solid #ebebeb;">
+      <div style="width:30px;height:30px;min-width:30px;border-radius:50%;background:#20ac41;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82em;font-weight:800;margin-top:2px;">1</div>
+      <div><h5 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 4px;">Zadarma отримує дзвінок</h5><p style="font-size:0.85em;color:#666;margin:0;">На номер CampScout → Zadarma PBX → webhook POST на <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">/zadarma/webhook</code> (NOTIFY_END, NOTIFY_OUT_END, NOTIFY_RECORD) з HMAC підписом.</p></div>
+    </div>
+
+    <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px solid #ebebeb;">
+      <div style="width:30px;height:30px;min-width:30px;border-radius:50%;background:#20ac41;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82em;font-weight:800;margin-top:2px;">2</div>
+      <div><h5 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 4px;">Partner / lead match</h5><p style="font-size:0.85em;color:#666;margin:0;">Модуль шукає <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">res.partner</code> за phone (normalized). Якщо не знайшов — створює lead з UTM=phone і assigned-менеджером за extension.</p></div>
+    </div>
+
+    <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px solid #ebebeb;">
+      <div style="width:30px;height:30px;min-width:30px;border-radius:50%;background:#20ac41;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82em;font-weight:800;margin-top:2px;">3</div>
+      <div><h5 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 4px;">Call record + chatter</h5><p style="font-size:0.85em;color:#666;margin:0;">Створюється <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">zadarma.call</code>; у chatter партнера / lead пишеться повідомлення з тривалістю, напрямком і менеджером.</p></div>
+    </div>
+
+    <div style="display:flex;gap:18px;padding:18px 0;">
+      <div style="width:30px;height:30px;min-width:30px;border-radius:50%;background:#20ac41;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82em;font-weight:800;margin-top:2px;">4</div>
+      <div><h5 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 4px;">Recording attach (async)</h5><p style="font-size:0.85em;color:#666;margin:0;">Коли Zadarma готує MP3-запис — окремий webhook повідомляє URL; модуль фетчить і attach як <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">ir.attachment</code> до call-запису + повідомлення в chatter.</p></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- REQUIREMENTS -->
+<div style="padding:44px 48px;border-bottom:1px solid #f0f0f0;background:#fafafa;">
+  <div style="font-size:0.72em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#20ac41;margin-bottom:8px;">Встановлення</div>
+  <h2 style="font-size:1.4em;font-weight:800;color:#111;margin:0 0 24px;letter-spacing:-0.3px;">Конфігурація</h2>
+  <div style="max-width:640px;">
+
+    <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px solid #ebebeb;">
+      <div style="width:30px;height:30px;min-width:30px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82em;font-weight:800;margin-top:2px;">1</div>
+      <div><h5 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 4px;">Odoo-модулі</h5><p style="font-size:0.85em;color:#666;margin:0;"><code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">base, crm, mail, sms</code>.</p></div>
+    </div>
+
+    <div style="display:flex;gap:18px;padding:18px 0;border-bottom:1px solid #ebebeb;">
+      <div style="width:30px;height:30px;min-width:30px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82em;font-weight:800;margin-top:2px;">2</div>
+      <div><h5 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 4px;">Zadarma credentials</h5><p style="font-size:0.85em;color:#666;margin:0;">User Key + Secret з <a href="https://my.zadarma.com" style="color:#20ac41;text-decoration:none;font-weight:600;">my.zadarma.com</a>. Налаштування: <strong>Settings → Companies → Zadarma</strong>.</p></div>
+    </div>
+
+    <div style="display:flex;gap:18px;padding:18px 0;">
+      <div style="width:30px;height:30px;min-width:30px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82em;font-weight:800;margin-top:2px;">3</div>
+      <div><h5 style="font-size:0.92em;font-weight:700;color:#111;margin:0 0 4px;">Webhook URL</h5><p style="font-size:0.85em;color:#666;margin:0;">У Zadarma CRM → Integrations: вказати <code style="background:#f4f4f4;border-radius:3px;padding:1px 5px;font-size:0.88em;">https://your-odoo.com/zadarma/webhook</code>. Підписати webhook secret у Settings Odoo.</p></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+  <div style="font-size:0.85em;color:#555;">
+    Автор: <strong style="color:#111;">Volodymyr Shevchenko</strong> · <a href="https://fayna.agency" style="color:#20ac41;text-decoration:none;font-weight:600;">Fayna Digital</a> · для <a href="https://campscout.eu" style="color:#20ac41;text-decoration:none;">CampScout</a>
+  </div>
+  <div style="background:#111;color:#fff;font-size:0.75em;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:0.5px;">v17.0.1.10.0</div>
+</div>
+
+</body>
+</html>

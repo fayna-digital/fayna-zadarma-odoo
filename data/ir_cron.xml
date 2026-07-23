@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Crons are staggered via priority (lower = runs first) so all four
+             never hit Zadarma API simultaneously when triggered in the same
+             scheduler tick. Each cron has its own internal API spacing. -->
+        <record id="ir_cron_recover_missing_recordings" model="ir.cron">
+            <field name="name">Zadarma: Recover missing call recordings</field>
+            <field name="model_id" ref="model_zadarma_call"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_recover_missing_recordings(days=60, limit=100)</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+            <field name="priority">10</field>
+        </record>
+
+        <record id="ir_cron_recover_missing_user_ids" model="ir.cron">
+            <field name="name">Zadarma: Backfill user_id for outbound calls</field>
+            <field name="model_id" ref="model_zadarma_call"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_recover_missing_user_ids(days=60, limit=100)</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+            <field name="priority">20</field>
+        </record>
+
+        <record id="ir_cron_rematch_orphan_leads" model="ir.cron">
+            <field name="name">Zadarma: Re-match orphan «Дзвінок:» leads to partners</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_rematch_orphan_leads(days=30, limit=100)</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+            <field name="priority">30</field>
+        </record>
+
+        <record id="ir_cron_rematch_orphan_calls" model="ir.cron">
+            <field name="name">Zadarma: Re-match orphan calls to partners</field>
+            <field name="model_id" ref="model_zadarma_call"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_rematch_orphan_calls(days=30, limit=200)</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+            <field name="priority">40</field>
+        </record>
+    </data>
+</odoo>

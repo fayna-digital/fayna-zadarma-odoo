@@ -1,0 +1,20 @@
+
+# Internal — not for public
+MEMORY.md
+
+# Python cache artifacts
+__pycache__/
+*.pyc
+
+# Секрети — НІКОЛИ не комітити (golden rule #1): Zadarma api_key/secret, HMAC
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*_secret*
+*_token*
+
+# Кеші інструментів
+.ruff_cache/
+.pytest_cache/

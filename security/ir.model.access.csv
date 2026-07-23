@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zadarma_call_user,zadarma.call.user,model_zadarma_call,base.group_user,1,0,0,0
+access_zadarma_call_manager,zadarma.call.manager,model_zadarma_call,base.group_system,1,1,1,1
+access_zadarma_import_manager,zadarma.import.manager,model_zadarma_import,base.group_system,1,1,1,1
+access_zadarma_dashboard_user,zadarma.dashboard.user,model_zadarma_dashboard,base.group_user,1,1,1,1
+access_res_users_zadarma_extension_user,res.users.zadarma.extension.user,model_res_users_zadarma_extension,base.group_user,1,0,0,0
+access_res_users_zadarma_extension_admin,res.users.zadarma.extension.admin,model_res_users_zadarma_extension,base.group_system,1,1,1,1

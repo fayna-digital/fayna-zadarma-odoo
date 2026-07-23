@@ -1,0 +1,1317 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zadarma_odoo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-12 16:30+0000\n"
+"PO-Revision-Date: 2026-06-12 00:00+0000\n"
+"Last-Translator: Fayna Digital\n"
+"Language-Team: Polish\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#, python-format
+msgid "%(m)sхв %(s)sс"
+msgstr "%(m)smin %(s)ss"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#, python-format
+msgid "%(s)sс"
+msgstr "%(s)ss"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_dashboard.py:0
+#: code:addons/zadarma_odoo/models/zadarma_dashboard.py:0
+#, python-format
+msgid "%s грн"
+msgstr "%s UAH"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_company_form_zadarma_inherit
+msgid ""
+"380:+380001112233\n"
+"48:+48001112233"
+msgstr ""
+"380:+380001112233\n"
+"48:+48001112233"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid "<b>📎 Запис розмови:</b> <a href=\"{url}\">Слухати запис</a>"
+msgstr "<b>📎 Nagranie rozmowy:</b> <a href=\"{url}\">Odsłuchaj nagranie</a>"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#, python-format
+msgid ""
+"<b>📞 {direction} дзвінок (імпорт)</b><br/>Номер: {phone}<br/>Тривалість: "
+"{duration}<br/>Статус: {status}"
+msgstr ""
+"<b>📞 Połączenie {direction} (import)</b><br/>Numer: {phone}<br/>Czas "
+"trwania: {duration}<br/>Status: {status}"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid ""
+"<b>📞 {direction} дзвінок</b><br/>Номер: {phone}<br/>Тривалість: {duration}"
+"<br/>Статус: {status}"
+msgstr ""
+"<b>📞 Połączenie {direction}</b><br/>Numer: {phone}<br/>Czas trwania: "
+"{duration}<br/>Status: {status}"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_dashboard.py:0
+#: code:addons/zadarma_odoo/models/zadarma_dashboard.py:0
+#, python-format
+msgid "API не налаштовано"
+msgstr "API nie skonfigurowane"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_needaction
+msgid "Action Needed"
+msgstr "Wymagane działanie"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__active
+msgid "Active"
+msgstr "Aktywny"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_ids
+msgid "Activities"
+msgstr "Aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_mail_activity
+msgid "Activity"
+msgstr "Aktywność"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Dekoracja wyjątku aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_state
+msgid "Activity State"
+msgstr "Stan aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ikona typu aktywności"
+
+#. module: zadarma_odoo
+#: model:res.groups,name:zadarma_odoo.group_zadarma_admin
+msgid "Administrator"
+msgstr "Administrator"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_attachment_count
+msgid "Attachment Count"
+msgstr "Liczba załączników"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_mail_activity__zadarma_call_id
+msgid ""
+"Back-reference to the Zadarma call that triggered this activity (used for "
+"idempotency of webhook-created missed-call follow-ups)."
+msgstr ""
+"Odwołanie zwrotne do połączenia Zadarma, które wywołało tę aktywność "
+"(używane do zapewnienia idempotencji działań następczych dla nieodebranych "
+"połączeń tworzonych przez webhook)."
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_call.py:0
+#: code:addons/zadarma_odoo/models/zadarma_call.py:0
+#, python-format
+msgid "Backfill з partner.user_id: %(done)s з %(total)s"
+msgstr "Backfill z partner.user_id: %(done)s z %(total)s"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__call_id
+msgid "Call ID"
+msgstr "Call ID"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_company__zadarma_callerid_rules
+msgid "CallerID Rules"
+msgstr "Reguły CallerID"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_company_form_zadarma_inherit
+msgid "CallerID за напрямком"
+msgstr "CallerID wg kierunku"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__color
+msgid "Color Index"
+msgstr "Indeks koloru"
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_res_company
+msgid "Companies"
+msgstr "Firmy"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__company_id
+msgid "Company"
+msgstr "Firma"
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__create_uid
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__create_uid
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__create_uid
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__create_uid
+msgid "Created by"
+msgstr "Utworzył(a)"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__create_date
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__create_date
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__create_date
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__create_date
+msgid "Created on"
+msgstr "Utworzono"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__display_name
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__display_name
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__display_name
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__display_name
+msgid "Display Name"
+msgstr "Nazwa wyświetlana"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_follower_ids
+msgid "Followers"
+msgstr "Obserwatorzy"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Obserwatorzy (partnerzy)"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Ikona Font awesome np. fa-tasks"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__has_message
+msgid "Has Message"
+msgstr "Ma wiadomość"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__id
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__id
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__id
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__id
+msgid "ID"
+msgstr "ID"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_exception_icon
+msgid "Icon"
+msgstr "Ikona"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikona wskazująca na wyjątkową aktywność."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Jeśli zaznaczone, nowe wiadomości wymagają twojej uwagi."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__message_has_error
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jeśli zaznaczone, niektóre wiadomości mają błąd dostarczenia."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_is_follower
+msgid "Is Follower"
+msgstr "Jest obserwatorem"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__color
+msgid ""
+"Kanban color tag — 0=neutral, 1=red(spam), 3=yellow(voicemail), "
+"5=purple(answered no owner), 4=cyan(Менеджер 1), 10=green(Менеджер 2), "
+"8=blue(Менеджер 3)."
+msgstr ""
+"Kolorowy tag Kanban — 0=neutralny, 1=czerwony(spam), 3=żółty(poczta "
+"głosowa), 5=fioletowy(odebrane bez właściciela), 4=cyjan(Менеджер 1), "
+"10=zielony(Менеджер 2), 8=niebieski(Менеджер 3)."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__write_uid
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__write_uid
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__write_uid
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__write_uid
+msgid "Last Updated by"
+msgstr "Ostatnio aktualizowane przez"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__write_date
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__write_date
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__write_date
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__write_date
+msgid "Last Updated on"
+msgstr "Ostatnia aktualizacja"
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Sygnał/Szansa"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_has_error
+msgid "Message Delivery error"
+msgstr "Błąd dostarczenia wiadomości"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+msgid "Message ID"
+msgstr "Message ID"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_ids
+msgid "Messages"
+msgstr "Wiadomości"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Termin mojej aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Wydarzenie w kalendarzu następnej aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Termin kolejnej aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_summary
+msgid "Next Activity Summary"
+msgstr "Podsumowanie kolejnej aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_type_id
+msgid "Next Activity Type"
+msgstr "Typ następnej aktywności"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Liczba akcji"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_has_error_counter
+msgid "Number of errors"
+msgstr "Liczba błędów"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Liczba wiadomości wymagających działania"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Liczba wiadomości z błędem dostarczenia"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__rating_ids
+msgid "Ratings"
+msgstr "Oceny"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__activity_user_id
+msgid "Responsible User"
+msgstr "Użytkownik odpowiedzialny"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__internal
+msgid "SIP ext"
+msgstr "SIP ext"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Błąd dostarczenia SMS"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+msgid "SMS Деталі"
+msgstr "Szczegóły SMS"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "SMS Пошук"
+msgstr "Wyszukiwanie SMS"
+
+#. module: zadarma_odoo
+#: model:ir.actions.act_window,name:zadarma_odoo.action_sms_stats
+#: model:ir.ui.menu,name:zadarma_odoo.menu_sms_stats
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "SMS Статистика"
+msgstr "Statystyki SMS"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status na podstawie aktywności\n"
+"Zaległe: Termin już minął\n"
+"Dzisiaj: Data aktywności przypada na dzisiaj\n"
+"Zaplanowane: Przyszłe aktywności."
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_dashboard_form
+msgid "TurboSMS"
+msgstr "TurboSMS"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "TurboSMS ID"
+msgstr "TurboSMS ID"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Typ wyjątku aktywności na rekordzie."
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_res_users
+#: model:res.groups,name:zadarma_odoo.group_zadarma_user
+msgid "User"
+msgstr "Użytkownik"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__website_message_ids
+msgid "Website Messages"
+msgstr "Wiadomości z witryny"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__website_message_ids
+msgid "Website communication history"
+msgstr "Historia komunikacji witryny"
+
+#. module: zadarma_odoo
+#: model:ir.ui.menu,name:zadarma_odoo.menu_zadarma_root
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_dashboard_form
+msgid "Zadarma"
+msgstr "Zadarma"
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_zadarma_dashboard
+msgid "Zadarma & TurboSMS Dashboard"
+msgstr "Panel Zadarma i TurboSMS"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#, python-format
+msgid "Zadarma API rate limit перевищено. Спробуйте через кілька хвилин."
+msgstr "Przekroczono limit zapytań Zadarma API. Spróbuj za kilka minut."
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_zadarma_call
+#: model:ir.model.fields,field_description:zadarma_odoo.field_mail_activity__zadarma_call_id
+msgid "Zadarma Call"
+msgstr "Połączenie Zadarma"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_crm_lead__zadarma_call_count
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_partner__zadarma_call_count
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users__zadarma_call_count
+msgid "Zadarma Call Count"
+msgstr "Liczba połączeń Zadarma"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_crm_lead__zadarma_call_ids
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_partner__zadarma_call_ids
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users__zadarma_call_ids
+msgid "Zadarma Calls"
+msgstr "Połączenia Zadarma"
+
+#. module: zadarma_odoo
+#: model:ir.module.category,name:zadarma_odoo.module_category_zadarma
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_users_form_zadarma_inherit
+msgid "Zadarma Integration"
+msgstr "Zadarma Integration"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_company__zadarma_api_key
+msgid "Zadarma Key"
+msgstr "Zadarma Key"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users__zadarma_internal_number
+msgid "Zadarma SIP ID (deprecated)"
+msgstr "Zadarma SIP ID (deprecated)"
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_res_users_zadarma_extension
+msgid "Zadarma SIP extension assigned to user"
+msgstr "Numer wewnętrzny SIP Zadarma przypisany do użytkownika"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users__zadarma_extension_ids
+msgid "Zadarma SIP розширення"
+msgstr "Rozszerzenie SIP Zadarma"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_company__zadarma_api_secret
+msgid "Zadarma Secret"
+msgstr "Zadarma Secret"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_company_form_zadarma_inherit
+msgid "Zadarma Settings"
+msgstr "Ustawienia Zadarma"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.ir_cron_recover_missing_user_ids_ir_actions_server
+msgid "Zadarma: Backfill user_id for outbound calls"
+msgstr "Zadarma: Uzupełnianie user_id dla połączeń wychodzących"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.ir_cron_rematch_orphan_calls_ir_actions_server
+msgid "Zadarma: Re-match orphan calls to partners"
+msgstr "Zadarma: Ponowne dopasowanie osieroconych połączeń do kontaktów"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.ir_cron_rematch_orphan_leads_ir_actions_server
+msgid "Zadarma: Re-match orphan «Дзвінок:» leads to partners"
+msgstr ""
+"Zadarma: Ponowne dopasowanie osieroconych sygnałów «Дзвінок:» do kontaktów"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.ir_cron_recover_missing_recordings_ir_actions_server
+msgid "Zadarma: Recover missing call recordings"
+msgstr "Zadarma: Odzyskiwanie brakujących nagrań rozmów"
+
+#. module: zadarma_odoo
+#: model:ir.actions.act_window,name:zadarma_odoo.action_zadarma_import
+#: model:ir.ui.menu,name:zadarma_odoo.menu_zadarma_import
+msgid "Імпорт дзвінків"
+msgstr "Import połączeń"
+
+#. module: zadarma_odoo
+#: model:ir.model,name:zadarma_odoo.model_zadarma_import
+msgid "Імпорт дзвінків Zadarma"
+msgstr "Import połączeń Zadarma"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_import_form
+msgid "Імпорт дзвінків із Zadarma"
+msgstr "Import połączeń z Zadarma"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#, python-format
+msgid "Імпортовано: %(imported)s дзвінків. Вже існували: %(skipped)s."
+msgstr "Zaimportowano: %(imported)s połączeń. Już istniały: %(skipped)s."
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_import_form
+msgid "Імпортувати"
+msgstr "Importuj"
+
+#. module: zadarma_odoo
+#: model:ir.ui.menu,name:zadarma_odoo.menu_zadarma_calls
+msgid "Історія дзвінків"
+msgstr "Historia połączeń"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__color_tag__angelina
+msgid "Менеджер 2"
+msgstr "Angelina"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__turbosms_balance
+msgid "Баланс TurboSMS"
+msgstr "Saldo TurboSMS"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_dashboard__zadarma_balance
+msgid "Баланс Zadarma"
+msgstr "Saldo Zadarma"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_dashboard.py:0
+#: code:addons/zadarma_odoo/models/zadarma_dashboard.py:0
+#: model:ir.actions.server,name:zadarma_odoo.action_zadarma_dashboard
+#: model:ir.ui.menu,name:zadarma_odoo.menu_zadarma_dashboard
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_dashboard_form
+#, python-format
+msgid "Баланси"
+msgstr "Salda"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__color_tag__orphan
+msgid "Без власника"
+msgstr "Bez właściciela"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__status__no_answer
+msgid "Без відповіді"
+msgstr "Bez odpowiedzi"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "В черзі"
+msgstr "W kolejce"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_res_users__zadarma_primary_extension
+msgid ""
+"Використовується для click-to-call із Odoo. Обчислюється з первинного "
+"активного розширення."
+msgstr ""
+"Używany do click-to-call z Odoo. Obliczany z pierwotnego aktywnego "
+"rozszerzenia."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_res_users_zadarma_extension__is_primary
+msgid "Використовується для click-to-call із Odoo. Тільки один на користувача."
+msgstr "Używany do click-to-call z Odoo. Tylko jeden na użytkownika."
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__direction__outbound
+#, python-format
+msgid "Вихідний"
+msgstr "Wychodzące"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#, python-format
+msgid "Вкажіть Zadarma API Key та Secret у налаштуваннях компанії."
+msgstr "Podaj Zadarma API Key oraz Secret w ustawieniach firmy."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_res_users_zadarma_extension__internal
+msgid "Внутрішній номер у Zadarma (наприклад, 104)"
+msgstr "Numer wewnętrzny w Zadarma (na przykład 104)"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__color_tag__volodymyr
+msgid "Менеджер 3"
+msgstr "Wołodymyr"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_import.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/models/zadarma_import.py:0
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__direction__inbound
+#, python-format
+msgid "Вхідний"
+msgstr "Przychodzące"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__date_from
+msgid "Від"
+msgstr "Od"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_form
+msgid "Відкрити запис розмови"
+msgstr "Otwórz nagranie rozmowy"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_form
+msgid "Відновити запис"
+msgstr "Przywróć nagranie"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.server_action_recover_recording
+msgid "Відновити записи розмов"
+msgstr "Przywróć nagrania rozmów"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_call.py:0
+#: code:addons/zadarma_odoo/models/zadarma_call.py:0
+#, python-format
+msgid "Відновлено записів: %(done)s з %(total)s"
+msgstr "Przywrócono nagrań: %(done)s z %(total)s"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__status__answered
+msgid "Відповів"
+msgstr "Odebrano"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__user_id
+msgid "Відповідальний"
+msgstr "Odpowiedzialny"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+msgid "Відповідь API"
+msgstr "Odpowiedź API"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Відправник"
+msgstr "Nadawca"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__color_tag__voicemail
+msgid "Голос. пошта"
+msgstr "Poczta gł."
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "Групування"
+msgstr "Grupowanie"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "Групувати"
+msgstr "Grupuj"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Дата"
+msgstr "Data"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__date_start
+msgid "Дата початку"
+msgstr "Data rozpoczęcia"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_form
+msgid "Деталі дзвінка"
+msgstr "Szczegóły połączenia"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_crm_lead_form_zadarma_stat_button_v2
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_partner_form_zadarma_call
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_tree
+msgid "Дзвінки"
+msgstr "Połączenia"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/partner_lead_ext.py:0
+#: code:addons/zadarma_odoo/models/partner_lead_ext.py:0
+#: model:ir.actions.act_window,name:zadarma_odoo.action_zadarma_calls
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_crm_lead_form_zadarma_stat_button_v2
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_partner_form_zadarma_call
+#, python-format
+msgid "Дзвінки Zadarma"
+msgstr "Połączenia Zadarma"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_call.py:0
+#: code:addons/zadarma_odoo/models/zadarma_call.py:0
+#, python-format
+msgid "Дзвінок %(phone)s (%(date)s)"
+msgstr "Połączenie %(phone)s (%(date)s)"
+
+#. module: zadarma_odoo
+#: model:ir.model.constraint,message:zadarma_odoo.constraint_zadarma_call_call_id_uniq
+msgid "Дзвінок з таким Call ID вже існує."
+msgstr "Połączenie o tym Call ID już istnieje."
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid "Дзвінок: %s"
+msgstr "Połączenie: %s"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__date_to
+msgid "До"
+msgstr "Do"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "Доставлені"
+msgstr "Dostarczone"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "За датою"
+msgstr "Wg daty"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "За менеджером"
+msgstr "Wg menedżera"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "За напрямком"
+msgstr "Wg kierunku"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "За статусом"
+msgstr "Wg statusu"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "За тегом (колір)"
+msgstr "Wg tagu (kolor)"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__name
+msgid "Заголовок"
+msgstr "Tytuł"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__status__busy
+msgid "Зайнято"
+msgstr "Zajęte"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_dashboard_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_import_form
+msgid "Закрити"
+msgstr "Zamknij"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__recording_url
+msgid "Запис розмови"
+msgstr "Nagranie rozmowy"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_res_users__zadarma_internal_number
+msgid ""
+"Застаріле — використовуйте вкладку «Zadarma Integration» з кількома ext-нами."
+msgstr "Przestarzałe — użyj zakładki «Zadarma Integration» z wieloma ext."
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_partner_form_zadarma_call
+msgid "Зателефонувати через Zadarma"
+msgstr "Zadzwoń przez Zadarma"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_form
+msgid "Зв'язки та Запис"
+msgstr "Powiązania i nagranie"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Канал"
+msgstr "Kanał"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_zadarma_call__color_tag
+msgid ""
+"Кольоровий тег для list view (widget=badge). Обчислюється разом із полем "
+"color у _compute_color."
+msgstr ""
+"Kolorowy tag dla widoku listy (widget=badge). Obliczany razem z polem color "
+"w _compute_color."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__company_id
+msgid "Компанія"
+msgstr "Firma"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__partner_id
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Контакт"
+msgstr "Kontakt"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__user_id
+msgid "Користувач"
+msgstr "Użytkownik"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/res_users_zadarma_extension.py:0
+#: code:addons/zadarma_odoo/models/res_users_zadarma_extension.py:0
+#, python-format
+msgid ""
+"Користувач %(user)s вже має основний ext %(other)s. Зніміть позначку перед "
+"призначенням нового."
+msgstr ""
+"Użytkownik %(user)s ma już główny ext %(other)s. Odznacz przed przypisaniem "
+"nowego."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__lead_id
+msgid "Лід"
+msgstr "Szansa"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_call.py:0
+#: code:addons/zadarma_odoo/models/zadarma_call.py:0
+#, python-format
+msgid "Н/Д"
+msgstr "Nd."
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_res_users_zadarma_extension__label
+msgid "Напр. \"Мобільний\", \"MicroSIP desktop\""
+msgstr "Np. \"Mobilny\", \"MicroSIP desktop\""
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_dashboard.py:0
+#: code:addons/zadarma_odoo/models/zadarma_dashboard.py:0
+#, python-format
+msgid "Не налаштовано"
+msgstr "Nie skonfigurowano"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__status__failed
+msgid "Невдалий"
+msgstr "Nieudane"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_call.py:0
+#: code:addons/zadarma_odoo/models/zadarma_call.py:0
+#, python-format
+msgid "Немає кандидатів для перематчингу."
+msgstr "Brak kandydatów do ponownego dopasowania."
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Номер"
+msgstr "Numer"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__phone_number
+msgid "Номер телефону"
+msgstr "Numer telefonu"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,help:zadarma_odoo.field_res_company__zadarma_callerid_rules
+msgid ""
+"Одне правило на рядок: PREFIX:CALLERID\n"
+"Приклад:\n"
+"380:+380001112233\n"
+"48:+48001112233"
+msgstr ""
+"Jedna reguła w wierszu: PREFIX:CALLERID\n"
+"Przykład:\n"
+"380:+380001112233\n"
+"48:+48001112233"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_dashboard_form
+msgid "Оновити"
+msgstr "Odśwież"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_form
+msgid "Основна інформація"
+msgstr "Informacje podstawowe"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__is_primary
+msgid "Основний"
+msgstr "Główny"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users__zadarma_primary_extension
+msgid "Основний ext (Zadarma)"
+msgstr "Główny ext (Zadarma)"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid "Передзвонити %s"
+msgstr "Oddzwoń %s"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_call.py:0
+#: code:addons/zadarma_odoo/models/zadarma_call.py:0
+#, python-format
+msgid ""
+"Перематчено менеджерів: %(done)s з %(total)s (не знайдено в stats: "
+"%(missing)s)"
+msgstr ""
+"Ponownie dopasowano menedżerów: %(done)s z %(total)s (nie znaleziono w "
+"stats: %(missing)s)"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_form
+msgid "Перематчити менеджера"
+msgstr "Dopasuj ponownie menedżera"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.server_action_recover_user_id
+msgid "Перематчити менеджерів"
+msgstr "Dopasuj ponownie menedżerów"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_crm_lead_form_zadarma_orphan
+msgid "Перепідв'язати (Zadarma)"
+msgstr "Powiąż ponownie (Zadarma)"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.server_action_rematch_orphan_leads
+msgid "Перепідв'язати «Дзвінок:» до партнера + merge"
+msgstr "Powiąż ponownie «Połączenie:» z partnerem + merge"
+
+#. module: zadarma_odoo
+#: model:ir.actions.server,name:zadarma_odoo.server_action_rematch_orphan_calls
+msgid "Перепідв'язати до партнера"
+msgstr "Powiąż ponownie z partnerem"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+msgid "Повідомлення"
+msgstr "Wiadomość"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__status__call_failed
+msgid "Помилка з'єднання"
+msgstr "Błąd połączenia"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_dashboard.py:0
+#: code:addons/zadarma_odoo/models/zadarma_dashboard.py:0
+#, python-format
+msgid "Помилка: %s"
+msgstr "Błąd: %s"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "Помилки"
+msgstr "Błędy"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "Пошук дзвінків"
+msgstr "Wyszukiwanie połączeń"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/zadarma_call.py:0
+#: code:addons/zadarma_odoo/models/zadarma_call.py:0
+#, python-format
+msgid "Прив'язано до партнера: %(done)s з %(total)s"
+msgstr "Powiązano z partnerem: %(done)s z %(total)s"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/models/crm_lead.py:0
+#: code:addons/zadarma_odoo/models/crm_lead.py:0
+#, python-format
+msgid ""
+"Прив'язано: %(matched)s; злито: %(merged)s; пропущено (≥2 open opp): "
+"%(skipped_multi)s; пропущено (orphan master): %(skipped_orphan_master)s"
+msgstr ""
+"Powiązano: %(matched)s; scalono: %(merged)s; pominięto (≥2 open opp): "
+"%(skipped_multi)s; pominięto (orphan master): %(skipped_orphan_master)s"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_res_users_zadarma_extension__label
+msgid "Пристрій"
+msgstr "Urządzenie"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Причина"
+msgstr "Powód"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+msgid "Причина помилки"
+msgstr "Powód błędu"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid ""
+"Пропущений %(direction)s дзвінок (тривалість %(duration)sс). Запис: %(rec)s"
+msgstr ""
+"Nieodebrane połączenie %(direction)s (czas trwania %(duration)ss). Nagranie: "
+"%(rec)s"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_import__result_message
+msgid "Результат"
+msgstr "Wynik"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid "Розмова: %s"
+msgstr "Rozmowa: %s"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__status__cancel
+msgid "Скасовано"
+msgstr "Anulowano"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_tree
+msgid "Слухати"
+msgstr "Odsłuchaj"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid "Слухати запис"
+msgstr "Odsłuchaj nagranie"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__color_tag__spam
+msgid "Спам"
+msgstr "Spam"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__status
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Статус"
+msgstr "Status"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "Сьогодні"
+msgstr "Dzisiaj"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__color_tag
+msgid "Тег"
+msgstr "Tag"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_form
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_tree
+msgid "Текст"
+msgstr "Treść"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__direction
+msgid "Тип"
+msgstr "Typ"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__duration_display
+msgid "Тривалість"
+msgstr "Czas trwania"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields,field_description:zadarma_odoo.field_zadarma_call__duration
+msgid "Тривалість (сек)"
+msgstr "Czas trwania (sek)"
+
+#. module: zadarma_odoo
+#: model:ir.model.constraint,message:zadarma_odoo.constraint_res_users_zadarma_extension_uniq_internal_per_company
+msgid "Цей SIP ext вже привʼязаний до іншого користувача в цій компанії."
+msgstr "Ten SIP ext jest już powiązany z innym użytkownikiem w tej firmie."
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "Цей місяць"
+msgstr "Ten miesiąc"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_sms_stats_search
+msgid "Цей тиждень"
+msgstr "Ten tydzień"
+
+#. module: zadarma_odoo
+#: model:ir.model.fields.selection,name:zadarma_odoo.selection__zadarma_call__color_tag__yurii
+msgid "Менеджер 1"
+msgstr "Менеджер 1"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid "вихідний"
+msgstr "wychodzące"
+
+#. module: zadarma_odoo
+#. odoo-python
+#: code:addons/_preflight/zadarma_odoo/controllers/webhook.py:0
+#: code:addons/zadarma_odoo/controllers/webhook.py:0
+#, python-format
+msgid "вхідний"
+msgstr "przychodzące"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "⏳ Зайнято"
+msgstr "⏳ Zajęte"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "⚠️ Невдалий"
+msgstr "⚠️ Nieudane"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "⚪ Без власника"
+msgstr "⚪ Bez właściciela"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "✅ Відповів"
+msgstr "✅ Odebrano"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "✖️ Скасовано"
+msgstr "✖️ Anulowano"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🎙 З записом"
+msgstr "🎙 Z nagraniem"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "👤 Мої дзвінки"
+msgstr "👤 Moje połączenia"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "📤 Вихідний"
+msgstr "📤 Wychodzące"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "📥 Вхідний"
+msgstr "📥 Przychodzące"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🔇 Без запису"
+msgstr "🔇 Bez nagrania"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🔕 Не прийнятий"
+msgstr "🔕 Nieodebrane"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🔴 Спам"
+msgstr "🔴 Spam"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🗓 Сьогодні"
+msgstr "🗓 Dzisiaj"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🗓 Цей місяць"
+msgstr "🗓 Ten miesiąc"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🗓 Цей тиждень"
+msgstr "🗓 Ten tydzień"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🟡 Пропущений"
+msgstr "🟡 Nieodebrane"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🟢 Менеджер 2"
+msgstr "🟢 Angelina"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🟣 Менеджер 3"
+msgstr "🟣 Wołodymyr"
+
+#. module: zadarma_odoo
+#: model_terms:ir.ui.view,arch_db:zadarma_odoo.view_zadarma_call_search
+msgid "🟦 Менеджер 1"
+msgstr "🟦 Менеджер 1"
+
+#~ msgid "Zadarma Call — multi-company"
+#~ msgstr "Połączenie Zadarma — wiele firm"

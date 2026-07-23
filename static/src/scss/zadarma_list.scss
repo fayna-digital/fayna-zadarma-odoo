@@ -1,0 +1,93 @@
+// Bright row background for Zadarma call list view.
+// Shotgun selectors — multiple variants so at least one matches the actual
+// DOM produced by Odoo 17 list_renderer for `decoration-*` attributes.
+
+// === SPAM — red ===
+tr.o_data_row.text-danger,
+.o_list_renderer tr.text-danger,
+.o_list_view tr.text-danger,
+table.o_list_table tr.text-danger,
+.o_data_row.text-danger,
+[class*="o_data_row"].text-danger {
+    background-color: #ff5252 !important;
+}
+tr.text-danger td,
+tr.text-danger a {
+    color: #fff !important;
+    background-color: #ff5252 !important;
+}
+
+// === VOICEMAIL / MISSED — yellow ===
+tr.o_data_row.text-warning,
+.o_list_renderer tr.text-warning,
+.o_list_view tr.text-warning,
+table.o_list_table tr.text-warning,
+.o_data_row.text-warning,
+[class*="o_data_row"].text-warning {
+    background-color: #ffeb3b !important;
+}
+tr.text-warning td,
+tr.text-warning a {
+    color: #5a4400 !important;
+    background-color: #ffeb3b !important;
+}
+
+// === ORPHAN — grey ===
+tr.o_data_row.text-muted,
+.o_list_renderer tr.text-muted,
+.o_list_view tr.text-muted,
+table.o_list_table tr.text-muted,
+.o_data_row.text-muted,
+[class*="o_data_row"].text-muted {
+    background-color: #cfd8dc !important;
+}
+tr.text-muted td,
+tr.text-muted a {
+    color: #263238 !important;
+    background-color: #cfd8dc !important;
+}
+
+// === MANAGER SLOT 1 — cyan ===
+tr.o_data_row.text-info,
+.o_list_renderer tr.text-info,
+.o_list_view tr.text-info,
+table.o_list_table tr.text-info,
+.o_data_row.text-info,
+[class*="o_data_row"].text-info {
+    background-color: #4fc3f7 !important;
+}
+tr.text-info td,
+tr.text-info a {
+    color: #01579b !important;
+    background-color: #4fc3f7 !important;
+}
+
+// === MANAGER SLOT 2 — green ===
+tr.o_data_row.text-success,
+.o_list_renderer tr.text-success,
+.o_list_view tr.text-success,
+table.o_list_table tr.text-success,
+.o_data_row.text-success,
+[class*="o_data_row"].text-success {
+    background-color: #69f0ae !important;
+}
+tr.text-success td,
+tr.text-success a {
+    color: #1b5e20 !important;
+    background-color: #69f0ae !important;
+}
+
+// === MANAGER SLOT 3 — violet ===
+tr.o_data_row.text-primary,
+.o_list_renderer tr.text-primary,
+.o_list_view tr.text-primary,
+table.o_list_table tr.text-primary,
+.o_data_row.text-primary,
+[class*="o_data_row"].text-primary {
+    background-color: #b39ddb !important;
+}
+tr.text-primary td,
+tr.text-primary a {
+    color: #311b92 !important;
+    background-color: #b39ddb !important;
+}

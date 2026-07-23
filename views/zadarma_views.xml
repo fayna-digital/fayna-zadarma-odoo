@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_zadarma_call_tree" model="ir.ui.view">
+            <field name="name">zadarma.call.tree</field>
+            <field name="model">zadarma.call</field>
+            <field name="arch" type="xml">
+                <tree class="o_zadarma_call_list" string="Дзвінки"
+                      create="0" edit="0" delete="0" duplicate="0"
+                      decoration-danger="color_tag == 'spam'"
+                      decoration-warning="color_tag == 'voicemail'"
+                      decoration-muted="color_tag == 'orphan'"
+                      decoration-info="color_tag == 'manager_1'"
+                      decoration-success="color_tag == 'manager_2'"
+                      decoration-primary="color_tag == 'manager_3'">
+                    <field name="date_start"/>
+                    <field name="phone_number" widget="phone"/>
+                    <field name="direction"/>
+                    <field name="duration_display"/>
+                    <field name="duration" column_invisible="True"/>
+                    <field name="status"/>
+                    <field name="user_id"/>
+                    <field name="color_tag" column_invisible="True"/>
+                    <field name="partner_id" optional="hide"/>
+                    <field name="lead_id" optional="hide"/>
+                    <field name="recording_url" widget="url" text="Слухати" invisible="not recording_url" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_zadarma_call_form" model="ir.ui.view">
+            <field name="name">zadarma.call.form</field>
+            <field name="model">zadarma.call</field>
+            <field name="arch" type="xml">
+                <form string="Деталі дзвінка" create="0" edit="0" delete="0" duplicate="0">
+                    <header>
+                        <button name="action_recover_recording" type="object" string="Відновити запис"
+                                invisible="recording_url"/>
+                        <button name="action_recover_user_id" type="object" string="Перематчити менеджера"
+                                invisible="user_id or direction != 'outbound'"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="Основна інформація">
+                                <field name="date_start"/>
+                                <field name="phone_number" widget="phone"/>
+                                <field name="direction"/>
+                                <field name="duration_display"/>
+                                <field name="duration" invisible="1"/>
+                                <field name="status"/>
+                            </group>
+                            <group string="Зв'язки та Запис">
+                                <field name="partner_id"/>
+                                <field name="lead_id"/>
+                                <field name="user_id"/>
+                                <field name="recording_url" widget="url" text="Відкрити запис розмови" invisible="not recording_url"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="server_action_recover_recording" model="ir.actions.server">
+            <field name="name">Відновити записи розмов</field>
+            <field name="model_id" ref="model_zadarma_call"/>
+            <field name="binding_model_id" ref="model_zadarma_call"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_recover_recording()</field>
+        </record>
+
+        <record id="server_action_recover_user_id" model="ir.actions.server">
+            <field name="name">Перематчити менеджерів</field>
+            <field name="model_id" ref="model_zadarma_call"/>
+            <field name="binding_model_id" ref="model_zadarma_call"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_recover_user_id()</field>
+        </record>
+
+        <record id="server_action_rematch_orphan_calls" model="ir.actions.server">
+            <field name="name">Перепідв'язати до партнера</field>
+            <field name="model_id" ref="model_zadarma_call"/>
+            <field name="binding_model_id" ref="model_zadarma_call"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_rematch_orphan()</field>
+        </record>
+
+        <record id="server_action_rematch_orphan_leads" model="ir.actions.server">
+            <field name="name">Перепідв'язати «Дзвінок:» до партнера + merge</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="binding_model_id" ref="model_crm_lead"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_rematch_orphan()</field>
+        </record>
+
+        <record id="view_crm_lead_form_zadarma_orphan" model="ir.ui.view">
+            <field name="name">crm.lead.form.zadarma.orphan</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_rematch_orphan" type="object" string="Перепідв'язати (Zadarma)"
+                            invisible="partner_id or not name or 'Дзвінок:' not in (name or '')"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_zadarma_call_search" model="ir.ui.view">
+            <field name="name">zadarma.call.search</field>
+            <field name="model">zadarma.call</field>
+            <field name="arch" type="xml">
+                <search string="Пошук дзвінків">
+                    <field name="phone_number"/>
+                    <field name="partner_id"/>
+                    <field name="lead_id"/>
+                    <field name="user_id"/>
+
+                    <!-- Direction -->
+                    <filter name="filter_inbound" string="📥 Вхідний"
+                            domain="[('direction', '=', 'inbound')]"/>
+                    <filter name="filter_outbound" string="📤 Вихідний"
+                            domain="[('direction', '=', 'outbound')]"/>
+                    <separator/>
+
+                    <!-- Status -->
+                    <filter name="filter_answered" string="✅ Відповів"
+                            domain="[('status', '=', 'answered')]"/>
+                    <filter name="filter_cancel" string="✖️ Скасовано"
+                            domain="[('status', '=', 'cancel')]"/>
+                    <filter name="filter_no_answer" string="🔕 Не прийнятий"
+                            domain="[('status', '=', 'no answer')]"/>
+                    <filter name="filter_busy" string="⏳ Зайнято"
+                            domain="[('status', '=', 'busy')]"/>
+                    <filter name="filter_failed" string="⚠️ Невдалий"
+                            domain="[('status', 'in', ('failed', 'call failed'))]"/>
+                    <separator/>
+
+                    <!-- Color-tag categories -->
+                    <filter name="filter_spam" string="🔴 Спам"
+                            domain="[('color_tag', '=', 'spam')]"/>
+                    <filter name="filter_missed" string="🟡 Пропущений"
+                            domain="[('color_tag', '=', 'voicemail')]"/>
+                    <filter name="filter_orphan" string="⚪ Без власника"
+                            domain="[('color_tag', '=', 'orphan')]"/>
+                    <separator/>
+
+                    <!-- Managers (row color configured per user, see res.users → tab "Zadarma Integration") -->
+                    <filter name="filter_manager_1" string="🟦 Менеджер (слот 1)"
+                            domain="[('color_tag', '=', 'manager_1')]"/>
+                    <filter name="filter_manager_2" string="🟢 Менеджер (слот 2)"
+                            domain="[('color_tag', '=', 'manager_2')]"/>
+                    <filter name="filter_manager_3" string="🟣 Менеджер (слот 3)"
+                            domain="[('color_tag', '=', 'manager_3')]"/>
+                    <filter name="filter_my_calls" string="👤 Мої дзвінки"
+                            domain="[('user_id', '=', uid)]"/>
+                    <separator/>
+
+                    <!-- Date ranges -->
+                    <filter name="filter_today" string="🗓 Сьогодні"
+                            domain="[('date_start', '&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+                    <filter name="filter_this_week" string="🗓 Цей тиждень"
+                            domain="[('date_start', '&gt;=', (context_today() - relativedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]"/>
+                    <filter name="filter_this_month" string="🗓 Цей місяць"
+                            domain="[('date_start', '&gt;=', context_today().strftime('%Y-%m-01'))]"/>
+                    <separator/>
+
+                    <!-- Recording -->
+                    <filter name="filter_with_recording" string="🎙 З записом"
+                            domain="[('recording_url', '!=', False)]"/>
+                    <filter name="filter_no_recording" string="🔇 Без запису"
+                            domain="[('recording_url', '=', False)]"/>
+
+                    <group expand="0" string="Групування">
+                        <filter name="group_by_user" string="За менеджером"
+                                context="{'group_by': 'user_id'}"/>
+                        <filter name="group_by_direction" string="За напрямком"
+                                context="{'group_by': 'direction'}"/>
+                        <filter name="group_by_status" string="За статусом"
+                                context="{'group_by': 'status'}"/>
+                        <filter name="group_by_color_tag" string="За тегом (колір)"
+                                context="{'group_by': 'color_tag'}"/>
+                        <filter name="group_by_date" string="За датою"
+                                context="{'group_by': 'date_start:day'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_zadarma_calls" model="ir.actions.act_window">
+            <field name="name">Дзвінки Zadarma</field>
+            <field name="res_model">zadarma.call</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_zadarma_call_search"/>
+        </record>
+
+        <menuitem id="menu_zadarma_root" name="Zadarma" sequence="10" web_icon="zadarma_odoo,static/description/icon.png"/>
+        <menuitem id="menu_zadarma_calls" name="Історія дзвінків" parent="menu_zadarma_root" action="action_zadarma_calls" sequence="10"/>
+    </data>
+</odoo>

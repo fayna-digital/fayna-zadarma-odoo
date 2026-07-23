@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_zadarma_import_form" model="ir.ui.view">
+            <field name="name">zadarma.import.form</field>
+            <field name="model">zadarma.import</field>
+            <field name="arch" type="xml">
+                <form string="Імпорт дзвінків із Zadarma">
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group invisible="not result_message">
+                        <field name="result_message" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_import" type="object" string="Імпортувати" class="btn-primary"/>
+                        <button string="Закрити" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_zadarma_import" model="ir.actions.act_window">
+            <field name="name">Імпорт дзвінків</field>
+            <field name="res_model">zadarma.import</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_zadarma_import" name="Імпорт дзвінків"
+                  parent="menu_zadarma_root"
+                  action="action_zadarma_import"
+                  sequence="20"/>
+    </data>
+</odoo>

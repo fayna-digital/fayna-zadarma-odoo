@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_company_form_zadarma_inherit" model="ir.ui.view">
+            <field name="name">res.company.form.zadarma.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Zadarma Settings" name="zadarma_settings">
+                        <group>
+                            <field name="zadarma_api_key" password="True"/>
+                            <field name="zadarma_api_secret" password="True"/>
+                            <field name="zadarma_missed_call_fallback_user_id"/>
+                        </group>
+                        <group string="CallerID за напрямком">
+                            <field name="zadarma_callerid_rules" nolabel="1"
+                                   placeholder="380:+380001112233&#10;48:+48001112233"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_users_form_zadarma_inherit" model="ir.ui.view">
+            <field name="name">res.users.form.zadarma.inherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='access_rights']" position="after">
+                    <page string="Zadarma Integration" name="zadarma">
+                        <group>
+                            <field name="zadarma_primary_extension" readonly="1"/>
+                            <field name="zadarma_internal_number" readonly="1"
+                                   invisible="not zadarma_internal_number"/>
+                            <field name="zadarma_manager_slot"/>
+                        </group>
+                        <field name="zadarma_extension_ids" context="{'default_user_id': id}">
+                            <tree editable="bottom">
+                                <field name="internal"/>
+                                <field name="label"/>
+                                <field name="is_primary" widget="boolean_toggle"/>
+                                <field name="active" widget="boolean_toggle"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sms_stats_tree" model="ir.ui.view">
+            <field name="name">sms.sms.stats.tree</field>
+            <field name="model">sms.sms</field>
+            <field name="arch" type="xml">
+                <tree string="SMS Статистика" create="0" delete="0" duplicate="0"
+                      decoration-success="state == 'sent'"
+                      decoration-danger="state == 'error'"
+                      decoration-muted="state == 'canceled'"
+                      decoration-info="state == 'outgoing'">
+                    <field name="create_date" string="Дата"/>
+                    <field name="number" string="Номер" widget="phone"/>
+                    <field name="partner_id" string="Контакт" optional="hide"/>
+                    <field name="body" string="Текст"/>
+                    <field name="state" string="Статус"
+                           decoration-success="state == 'sent'"
+                           decoration-danger="state == 'error'"
+                           widget="badge"/>
+                    <field name="failure_type" string="Причина" optional="hide"/>
+                    <field name="kw_turbosms_sms_or_viber" string="Канал" optional="hide"/>
+                    <field name="kw_turbosms_message_id" string="TurboSMS ID" optional="hide"/>
+                    <field name="create_uid" string="Відправник" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sms_stats_form" model="ir.ui.view">
+            <field name="name">sms.sms.stats.form</field>
+            <field name="model">sms.sms</field>
+            <field name="arch" type="xml">
+                <form string="SMS Деталі" create="0" delete="0" duplicate="0">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="number"/></h1>
+                        </div>
+                        <group>
+                            <group string="Повідомлення">
+                                <field name="create_date" string="Дата"/>
+                                <field name="partner_id" string="Контакт"/>
+                                <field name="body" string="Текст"/>
+                                <field name="state" string="Статус" widget="badge"/>
+                                <field name="failure_type" string="Причина помилки"
+                                       invisible="state != 'error'"/>
+                            </group>
+                            <group string="TurboSMS">
+                                <field name="kw_turbosms_message_id" string="Message ID"/>
+                                <field name="kw_turbosms_sms_or_viber" string="Канал"/>
+                                <field name="kw_turbosms_response_status" string="Відповідь API"/>
+                                <field name="create_uid" string="Відправник"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sms_stats_search" model="ir.ui.view">
+            <field name="name">sms.sms.stats.search</field>
+            <field name="model">sms.sms</field>
+            <field name="arch" type="xml">
+                <search string="SMS Пошук">
+                    <field name="number"/>
+                    <field name="partner_id"/>
+                    <field name="body"/>
+                    <filter name="sent" string="Доставлені" domain="[('state', '=', 'sent')]"/>
+                    <filter name="error" string="Помилки" domain="[('state', '=', 'error')]"/>
+                    <filter name="outgoing" string="В черзі" domain="[('state', '=', 'outgoing')]"/>
+                    <separator/>
+                    <filter name="today" string="Сьогодні"
+                            domain="[('create_date', '&gt;=', (context_today()).strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="week" string="Цей тиждень"
+                            domain="[('create_date', '&gt;=', (context_today() - datetime.timedelta(days=7)).strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="month" string="Цей місяць"
+                            domain="[('create_date', '&gt;=', (context_today()).strftime('%%Y-%%m-01'))]"/>
+                    <group expand="0" string="Групувати">
+                        <filter name="group_state" string="Статус" context="{'group_by': 'state'}"/>
+                        <filter name="group_user" string="Відправник" context="{'group_by': 'create_uid'}"/>
+                        <filter name="group_date" string="Дата" context="{'group_by': 'create_date:day'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_sms_stats" model="ir.actions.act_window">
+            <field name="name">SMS Статистика</field>
+            <field name="res_model">sms.sms</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sms_stats_tree"/>
+            <field name="search_view_id" ref="view_sms_stats_search"/>
+            <field name="context">{'search_default_month': 1}</field>
+        </record>
+
+        <menuitem id="menu_sms_stats"
+                  name="SMS Статистика"
+                  parent="menu_zadarma_root"
+                  action="action_sms_stats"
+                  sequence="20"/>
+    </data>
+</odoo>
