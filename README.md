@@ -1,4 +1,4 @@
-# Odoo 17 Zadarma Телефонія — Автологування, Запис, Click-to-Call, SMS
+# Odoo 17 Zadarma Telefonia — Autologowanie, Nagrania, Click-to-Call, SMS
 
 ![Odoo Version](https://img.shields.io/badge/Odoo-17.0%20Community-purple)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
@@ -6,136 +6,141 @@
 ![License](https://img.shields.io/badge/License-LGPL--3-green.svg)
 ![Status](https://img.shields.io/badge/Status-Production-brightgreen)
 
-**Розроблено [Fayna Digital](https://www.fayna.agency) для CampScout**
-**Автор: Volodymyr Shevchenko**
+**Opracowane przez [Fayna Digital](https://www.fayna.agency) dla CampScout**
+**Autor: Volodymyr Shevchenko**
 
 ---
 
-Інтеграція хмарної АТС **Zadarma** з Odoo 17 CRM. Кожен вхідний та вихідний дзвінок автоматично фіксується і прив'язується до `res.partner` та `crm.lead`, з повним MP3-записом, прикріпленим до чатера. Підтримує click-to-call з картки партнера, аналітику SMS (над `sms.sms`) із дашбордом балансу TurboSMS та автостворення лідів при пропущених дзвінках з невідомих номерів.
+Integracja chmurowej centrali **Zadarma** z Odoo 17 CRM. Każde połączenie
+przychodzące i wychodzące jest automatycznie rejestrowane i wiązane z
+`res.partner` oraz `crm.lead`, z pełnym nagraniem MP3 dołączanym do czatu.
+Obsługuje click-to-call z karty partnera, analitykę SMS (nad `sms.sms`) z
+pulpitami balansu TurboSMS oraz automatyczne tworzenie leadów przy nieodebranych
+połączeniach z nieznanych numerów.
 
-Еталонне розгортання: [CampScout](https://campscout.eu).
+Referencyjne wdrożenie: [CampScout](https://campscout.eu).
 
 ---
 
-## Можливості
+## Możliwości
 
-### Дзвінки
-- **Автологування дзвінків** — webhook Zadarma → записи `zadarma.call` (`NOTIFY_END`, `NOTIFY_OUT_END`, `NOTIFY_RECORD`)
-- **Запис розмов** — MP3 автозавантажується і прикріплюється до chatter партнера/ліда
-- **Click-to-call** — кнопка у формі `res.partner` → Zadarma Callback API ініціює дзвінок на внутрішній номер менеджера
-- **Автолід для невідомих** — невідомий абонент → новий `crm.lead` («Дзвінок: +xxx»), призначений менеджеру за внутрішнім номером
-- **Auto-lead на answered** — відповіли на дзвінок з існуючим контактом без ліда → автоматично створюється `crm.lead` (`Розмова: {partner.name}`)
-- **First-call ownership** — перший _відповідений_ outbound від менеджера → `partner.user_id` встановлюється автоматично
-- **user_id fallback chain** — пропущений вхідний без SIP → дзвінок призначається `partner.user_id` (або `lead.user_id`)
-- **Multi-extension mapping** — N:1 `res.users` ↔ extension через окрему модель `res.users.zadarma.extension`
+### Połączenia
+- **Autologowanie połączeń** — webhook Zadarma → rekordy `zadarma.call` (`NOTIFY_END`, `NOTIFY_OUT_END`, `NOTIFY_RECORD`)
+- **Nagrania rozmów** — MP3 automatycznie pobierane i dołączane do czatu partnera/leada
+- **Click-to-call** — przycisk w formularzu `res.partner` → Zadarma Callback API inicjuje połączenie na wewnętrzny numer menedżera
+- **Auto-lead dla nieznanych** — nieznany abonent → nowy `crm.lead` («Połączenie: +xxx»), przypisany menedżerowi po wewnętrznym numerze
+- **Auto-lead na answered** — odebrano połączenie z istniejącym kontaktem bez lea → automatycznie tworzony `crm.lead` (`Rozmowa: {partner.name}`)
+- **First-call ownership** — pierwsze _odebrane_ outbound od menedżera → `partner.user_id` ustawiane automatycznie
+- **user_id fallback chain** — nieodebrane przychodzące bez SIP → połączenie przypisywane `partner.user_id` (lub `lead.user_id`)
+- **Multi-extension mapping** — N:1 `res.users` ↔ extension przez osobną model `res.users.zadarma.extension`
 
-### Візуалізація
-- **Кольорове маркування рядків** через SCSS asset (`web.assets_backend`):
-  - 🔴 Спам (phone у `phone.blacklist`)
-  - 🟡 Пропущений (будь-який `status != 'answered'`)
-  - ⚪ Без власника (`answered` без `user_id`)
-  - 🟦 / 🟢 / 🟣 до 3 менеджерів — колір конфігурується per-user (`res.users.zadarma_manager_slot`), без хардкоду імен у коді
-- **Search view легенда** — фільтри за напрямком/статусом/менеджером/датою/записом, group_by
+### Wizualizacja
+- **Kolorowe oznaczanie wierszy** przez asset SCSS (`web.assets_backend`):
+  - 🔴 Spam (phone w `phone.blacklist`)
+  - 🟡 Nieodebrane (dowolny `status != 'answered'`)
+  - ⚪ Bez właściciela (`answered` bez `user_id`)
+  - 🟦 / 🟢 / 🟣 do 3 menedżerów — kolor konfigurowany per-user (`res.users.zadarma_manager_slot`), bez hardkodu nazw w kodzie
+- **Legenda widoku wyszukiwania** — filtry po kierunku/statusie/menedżerze/dacie/nagraniu, group_by
 
-### Безпека та цілісність
-- **HMAC-SHA1 verification** webhook (warning mode → enforce після прод-логів)
-- **UNIQUE constraint** на `call_id` (PostgreSQL-level dedup)
-- **Multi-company** — `company_id` поле + `ir.rule` із domain `('|', company_id=False, company_id in company_ids)`
+### Bezpieczeństwo i integralność
+- **Weryfikacja HMAC-SHA1** webhook (warning mode → enforce po logach prod)
+- **UNIQUE constraint** na `call_id` (dedup na poziomie PostgreSQL)
+- **Multi-company** — pole `company_id` + `ir.rule` z domain `('|', company_id=False, company_id in company_ids)`
 
 ### SMS
-- **Аналітика SMS** — представлення над стандартною `sms.sms` (дерево/форма/пошук): статуси доставки, розбивка по партнеру, поля TurboSMS (`kw_turbosms_*`)
-- **Дашборд балансу TurboSMS** — модель `zadarma.dashboard` показує баланс Zadarma + TurboSMS
-- ⚠️ Модуль **не надсилає SMS самостійно** — відправлення виконує стандартний SMS-стек Odoo / зовнішній конектор TurboSMS; тут лише статистика та баланси
+- **Analityka SMS** — widoki nad standardowym `sms.sms` (drzewo/formularz/wyszukiwanie): statusy dostarczenia, podział po partnerze, pola TurboSMS (`kw_turbosms_*`)
+- **Pulpit balansu TurboSMS** — model `zadarma.dashboard` pokazuje balans Zadarma + TurboSMS
+- ⚠️ Moduł **nie wysyła SMS samodzielnie** — wysyłkę wykonuje standardowy stack SMS Odoo / zewnętrzny konektor TurboSMS; tutaj tylko statystyki i balanse
 
-### Інше
-- **Масовий імпорт** — чанк-імпорт через Statistics API Zadarma з прогресом та resume
-- **Відстеження результату** — answered / no answer / cancel / busy / failed / call failed
-- **Chatter** на формі дзвінка — `mail.thread` + `mail.activity.mixin`
-- **Cron priorities** (10/20/30/40) — recover_recordings → backfill_user_ids → rematch_orphan_leads → rematch_orphan_calls, серіалізує API виклики
-- **DB indexes** на `date_start`, `status`, `direction`, `user_id` для швидкого list view
+### Inne
+- **Import masowy** — chunk-import przez Statistics API Zadarma z postępem i resume
+- **Śledzenie wyniku** — answered / no answer / cancel / busy / failed / call failed
+- **Chatter** na formularzu połączenia — `mail.thread` + `mail.activity.mixin`
+- **Priorytety cron** (10/20/30/40) — recover_recordings → backfill_user_ids → rematch_orphan_leads → rematch_orphan_calls, serializuje wywołania API
+- **Indeksy DB** na `date_start`, `status`, `direction`, `user_id` dla szybkiego widoku listy
 
 ---
 
-## Архітектура
+## Architektura
 
 ```
 zadarma-odoo/
-├── __init__.py                          # imports controllers, models + post_init_hook
-├── __manifest__.py                      # 17.0.1.14.0, assets bundle declaration
-├── hooks.py                             # post_init_hook (вимикає binotel duplicate buttons)
+├── __init__.py                          # importuje controllers, models + post_init_hook
+├── __manifest__.py                      # 17.0.1.14.0, deklaracja bundle assets
+├── hooks.py                             # post_init_hook (wyłącza binotel duplicate buttons)
 ├── models/
-│   ├── zadarma_call.py                  # Основна модель + _inherit mail.thread + _sql_constraints UNIQUE
-│   ├── zadarma_import.py                # TransientModel wizard масового імпорту
-│   ├── zadarma_dashboard.py             # Модель балансів Zadarma + TurboSMS
-│   ├── crm_lead.py                      # Розширення crm.lead (orphan re-match)
+│   ├── zadarma_call.py                  # Główna model + _inherit mail.thread + _sql_constraints UNIQUE
+│   ├── zadarma_import.py                # TransientModel wizard importu masowego
+│   ├── zadarma_dashboard.py             # Model balansów Zadarma + TurboSMS
+│   ├── crm_lead.py                      # Rozszerzenie crm.lead (orphan re-match)
 │   ├── mail_activity.py                 # zadarma_call_id back-ref (idempotency)
-│   ├── partner_lead_ext.py              # zadarma_call_count з @api.depends
-│   ├── res_company.py                   # Облікові дані Zadarma
-│   ├── res_partner.py                   # Розширення партнера
+│   ├── partner_lead_ext.py              # zadarma_call_count z @api.depends
+│   ├── res_company.py                   # Dane uwierzytelniające Zadarma
+│   ├── res_partner.py                   # Rozszerzenie partnera
 │   ├── res_users.py                     # SIP extension (legacy)
 │   └── res_users_zadarma_extension.py   # N:1 user → extensions mapping
 ├── controllers/
-│   └── webhook.py                       # /zadarma/webhook + HMAC verification (warning mode)
+│   └── webhook.py                       # /zadarma/webhook + weryfikacja HMAC (warning mode)
 ├── data/
-│   └── ir_cron.xml                      # 4 cron з priority offset
+│   └── ir_cron.xml                      # 4 crony z offsetem priorytetu
 ├── views/
 │   ├── zadarma_views.xml                # Tree + form + search + actions
-│   ├── zadarma_dashboard_views.xml      # Modal балансів
-│   ├── zadarma_import_views.xml         # Wizard імпорту
-│   ├── sms_stats_views.xml              # Аналітика SMS
+│   ├── zadarma_dashboard_views.xml      # Modal balansów
+│   ├── zadarma_import_views.xml         # Wizard importu
+│   ├── sms_stats_views.xml              # Analityka SMS
 │   ├── res_company_views.xml            # Credentials
-│   ├── res_users_views.xml              # SIP mapping UI
-│   └── partner_lead_views.xml           # Smart button на partner/lead
+│   ├── res_users_views.xml              # UI mapowania SIP
+│   └── partner_lead_views.xml           # Smart button na partner/lead
 ├── security/
-│   ├── zadarma_security.xml             # Groups + ir.rule multi-company
+│   ├── zadarma_security.xml             # Grupy + ir.rule multi-company
 │   └── ir.model.access.csv
 ├── static/
 │   ├── description/
-│   └── src/scss/zadarma_list.scss       # Row coloring per color_tag
+│   └── src/scss/zadarma_list.scss       # Kolorowanie wierszy per color_tag
 └── docs/
     ├── ARCHITECTURE.md
     ├── DEPLOYMENT.md
     ├── RUNBOOK.md
-    └── TZ.md                            # Features checklist (✅ / 🔲 / ❌)
+    └── TZ.md                            # Checklist funkcji (✅ / 🔲 / ❌)
 ```
 
 ---
 
-## Технологічний стек
+## Stack technologiczny
 
-| Компонент | Технологія |
+| Komponent | Technologia |
 |-----------|-----------|
-| ERP-фреймворк | Odoo 17.0 Community |
-| Основні залежності | `base`, `crm`, `mail`, `phone_validation`, `sms` |
-| АТС | Zadarma cloud (SIP + webhooks) |
-| Версія API | Zadarma API v1 |
-| Підпис | HMAC-SHA1 |
-| Формат запису | MP3 (зберігається як `ir.attachment` постійно) |
-| Автоатрибуція | Внутрішній номер → `res.users.zadarma_extension` |
-| Версія модуля | 17.0.1.14.0 |
-| Ліцензія | LGPL-3.0 |
+| Framework ERP | Odoo 17.0 Community |
+| Główne zależności | `base`, `crm`, `mail`, `phone_validation`, `sms` |
+| Centrala | Zadarma cloud (SIP + webhooks) |
+| Wersja API | Zadarma API v1 |
+| Podpis | HMAC-SHA1 |
+| Format nagrania | MP3 (zapisywane jako `ir.attachment` na stałe) |
+| Auto-atybucja | Wewnętrzny numer → `res.users.zadarma_extension` |
+| Wersja modułu | 17.0.1.14.0 |
+| Licencja | LGPL-3.0 |
 
 ---
 
-## Встановлення
+## Instalacja
 
-### 1. Клонування в custom-addons
+### 1. Klonowanie do custom-addons
 
 ```bash
 cd /opt/<client>/custom-addons
 git clone https://github.com/fayna-digital/fayna-zadarma-odoo.git zadarma_odoo
 ```
 
-### 2. Встановлення модуля
+### 2. Instalacja modułu
 
 ```bash
 docker exec <client>_web odoo -c /etc/odoo/odoo.conf -d <db> \
     -i zadarma_odoo --stop-after-init --no-http
 ```
 
-Або через UI: **Застосунки → Оновити список застосунків → пошук `Zadarma` → Встановити**.
+Lub przez UI: **Aplikacje → Aktualizuj listę aplikacji → szukaj `Zadarma` → Zainstaluj**.
 
-### 3. Перезапуск Odoo
+### 3. Restart Odoo
 
 ```bash
 docker restart <client>_web
@@ -143,229 +148,229 @@ docker restart <client>_web
 
 ---
 
-## Налаштування
+## Konfiguracja
 
-### Крок 1 — Генерація облікових даних Zadarma API
+### Krok 1 — Generowanie danych uwierzytelniających API Zadarma
 
-1. Увійдіть на [my.zadarma.com](https://my.zadarma.com) → **Налаштування → API**
-2. Згенеруйте **API Key** та **API Secret**
-3. Скопіюйте обидва
+1. Zaloguj się na [my.zadarma.com](https://my.zadarma.com) → **Ustawienia → API**
+2. Wygeneruj **API Key** oraz **API Secret**
+3. Skopiuj oba
 
-### Крок 2 — Налаштування в Odoo
+### Krok 2 — Konfiguracja w Odoo
 
-**Налаштування → Користувачі й компанії → Компанії → [активна компанія] → вкладка «Zadarma»**:
+**Ustawienia → Użytkownicy i firmy → Firmy → [aktywna firma] → zakładka «Zadarma»**:
 
-| Поле | Значення |
+| Pole | Wartość |
 |-------|-------|
-| Zadarma User Key | вставте API Key |
-| Zadarma User Secret | вставте API Secret |
-| Zadarma Webhook Secret | випадково згенерований рядок (наприклад `openssl rand -hex 32`) |
+| Zadarma User Key | wklej API Key |
+| Zadarma User Secret | wklej API Secret |
+| Zadarma Webhook Secret | losowo wygenerowany ciąg (np. `openssl rand -hex 32`) |
 
-### Крок 3 — Призначення внутрішніх номерів користувачам
+### Krok 3 — Przypisanie wewnętrznych numerów użytkownikom
 
-Для кожного менеджера:
+Dla każdego menedżera:
 
-1. **Налаштування → Користувачі → [користувач] → вкладка «Zadarma»**
-2. **Внутрішній номер Zadarma** = внутрішній номер (наприклад `100`, `101`)
-3. Повинен збігатися з внутрішнім номером, налаштованим у Zadarma АТС для цього менеджера
+1. **Ustawienia → Użytkownicy → [użytkownik] → zakładka «Zadarma»**
+2. **Wewnętrzny numer Zadarma** = wewnętrzny numer (np. `100`, `101`)
+3. Musi się zgadzać z wewnętrznym numerem skonfigurowanym w centrali Zadarma dla tego menedżera
 
-### Крок 4 — Реєстрація webhook у Zadarma
+### Krok 4 — Rejestracja webhook w Zadarma
 
-[my.zadarma.com](https://my.zadarma.com) → **Інтеграції → CRM / Зовнішні системи → Webhooks**:
+[my.zadarma.com](https://my.zadarma.com) → **Integracje → CRM / Systemy zewnętrzne → Webhooks**:
 
 - URL: `https://<your-odoo>.com/zadarma/webhook`
-- Події: увімкніть `NOTIFY_START`, `NOTIFY_ANSWER`, `NOTIFY_END`, `NOTIFY_RECORD`
-- Secret: вставте той самий webhook secret з налаштувань Odoo
+- Zdarzenia: włącz `NOTIFY_START`, `NOTIFY_ANSWER`, `NOTIFY_END`, `NOTIFY_RECORD`
+- Secret: wklej ten sam webhook secret z ustawień Odoo
 
 ---
 
-## Використання
+## Użycie
 
-### Вхідний дзвінок
+### Połączenie przychodzące
 
-1. Клієнт дзвонить на ваш номер Zadarma
-2. Zadarma АТС маршрутизує → вибирає внутрішній номер менеджера
-3. Webhook `/zadarma/webhook` отримує послідовність подій:
-   - `NOTIFY_START` → створюється `zadarma.call`, ідентифікується партнер або автоматично створюється лід
-   - `NOTIFY_ANSWER` → менеджер атрибутується за внутрішнім номером
-   - `NOTIFY_END` → записується тривалість, результат
-   - `NOTIFY_RECORD` → завантажується MP3, прикріплюється до чатера
-4. У чатері партнера/ліда з'являється повідомлення з деталями дзвінка + аудіоплеєром
+1. Klient dzwoni na Twój numer Zadarma
+2. Centrala Zadarma routuje → wybiera wewnętrzny numer menedżera
+3. Webhook `/zadarma/webhook` otrzymuje sekwencję zdarzeń:
+   - `NOTIFY_START` → tworzony `zadarma.call`, identyfikowany partner lub automatycznie tworzony lead
+   - `NOTIFY_ANSWER` → menedżer atrybuowany po wewnętrznym numerze
+   - `NOTIFY_END` → zapisywany czas trwania, wynik
+   - `NOTIFY_RECORD` → pobierane MP3, dołączane do czatu
+4. W czacie partnera/leada pojawia się wiadomość ze szczegółami połączenia + odtwarzaczem audio
 
 ### Click-to-call
 
-1. Відкрийте форму партнера (`res.partner`)
-2. Натисніть кнопку **Дзвінок** (значок телефону поруч з номером)
-3. Zadarma API ініціює дзвінок:
-   - Спочатку дзвонить на внутрішній номер менеджера
-   - При відповіді → з'єднує з PSTN партнера
-4. Слідує стандартний webhook-ланцюжок (тільки з `direction='out'`)
+1. Otwórz formularz partnera (`res.partner`)
+2. Kliknij przycisk **Zadzwoń** (ikona telefonu obok numeru)
+3. Zadarma API inicjuje połączenie:
+   - Najpierw dzwoni na wewnętrzny numer menedżera
+   - Po odebraniu → łączy z PSTN partnera
+4. Następuje standardowy łańcuch webhook (tylko z `direction='out'`)
 
 ### SMS
 
-Модуль **не має власної моделі відправлення SMS** і не шле повідомлення сам. Він надає:
+Moduł **nie ma własnej modelu wysyłki SMS** i nie wysyła wiadomości sam. Dostarcza:
 
-- **Аналітику над `sms.sms`** — окреме меню з деревом / формою / пошуком по стандартних SMS-записах Odoo, з полями TurboSMS (`kw_turbosms_message_id`, `kw_turbosms_sms_or_viber`, `kw_turbosms_response_status`) для тих, хто використовує конектор `kw_sms_turbosms`.
-- **Дашборд балансу** (`zadarma.dashboard`) — баланс Zadarma + баланс TurboSMS (запит до `api.turbosms.ua/user/balance.json`).
+- **Analitykę nad `sms.sms`** — osobne menu z drzewem / formularzem / wyszukiwaniem po standardowych rekordach SMS Odoo, z polami TurboSMS (`kw_turbosms_message_id`, `kw_turbosms_sms_or_viber`, `kw_turbosms_response_status`) dla używających konektora `kw_sms_turbosms`.
+- **Pulpit balansu** (`zadarma.dashboard`) — balans Zadarma + balans TurboSMS (zapytanie do `api.turbosms.ua/user/balance.json`).
 
-Саме надсилання SMS відбувається через стандартний SMS-стек Odoo (`sms.sms`) або зовнішній конектор TurboSMS — не через цей модуль.
+Samo wysyłanie SMS odbywa się przez standardowy stack SMS Odoo (`sms.sms`) lub zewnętrzny konektor TurboSMS — nie przez ten moduł.
 
-### Масовий імпорт дзвінків
+### Import masowy połączeń
 
-**Меню → Zadarma → Імпорт дзвінків**:
+**Menu → Zadarma → Import połączeń**:
 
-1. Вкажіть діапазон дат (від / до)
-2. Натисніть **Запустити** — використовує Statistics API Zadarma, розмір чанку 50
-3. Прогрес-бар оновлюється; можна зупинити і продовжити
-4. Для тисяч дзвінків — 10-30 хвилин
+1. Podaj zakres dat (od / do)
+2. Kliknij **Uruchom** — używa Statistics API Zadarma, rozmiar chunku 50
+3. Pasek postępu się aktualizuje; można zatrzymać i wznowić
+4. Dla tysięcy połączeń — 10-30 minut
 
 ---
 
-## Webhook Flow (технічно)
+## Webhook Flow (technicznie)
 
 ```
-1. Клієнт дзвонить на +48 XXX XXX XXX (ваш номер Zadarma)
-2. Zadarma АТС маршрутизує дзвінок
+1. Klient dzwoni na +48 XXX XXX XXX (Twój numer Zadarma)
+2. Centrala Zadarma routuje połączenie
 3. POST https://<odoo>/zadarma/webhook
-4. Controller _verify_signature_warning() — обчислює обидва варіанти HMAC,
-   логує match/mismatch (warning mode; НЕ блокує запит у v17.0.1.14.0)
-5. Диспетчеризація за типом події (v17.0.1.14.0):
-   ├── NOTIFY_END (вхідний + outbound без internal):
-   │   ├── Визначення direction за довжиною caller_id (≤5 цифр = outbound)
-   │   ├── Нормалізація телефону → пошук res.partner (SQL LIKE %suffix% по kw_phone_cleaned)
-   │   ├── _find_existing_lead → відкритий lead для партнера/телефону
+4. Controller _verify_signature_warning() — liczy oba warianty HMAC,
+   loguje match/mismatch (warning mode; NIE blokuje żądania w v17.0.1.14.0)
+5. Dyspozytoryzacja po typie zdarzenia (v17.0.1.14.0):
+   ├── NOTIFY_END (przychodzące + outbound bez internal):
+   │   ├── Określenie kierunku po długości caller_id (≤5 cyfr = outbound)
+   │   ├── Normalizacja telefonu → szukanie res.partner (SQL LIKE %suffix% po kw_phone_cleaned)
+   │   ├── _find_existing_lead → otwarty lead dla partnera/telefonu
    │   ├── user fallback chain: SIP → partner.user_id → lead.user_id
    │   ├── Auto-create lead:
-   │   │   ├── не знайдено ні partner ні lead → "Дзвінок: +xxx"
-   │   │   └── answered + partner але без lead → "Розмова: {partner.name}"
-   │   ├── First-call ownership: answered outbound + partner без user_id
+   │   │   ├── nie znaleziono ani partnera ani lea → "Połączenie: +xxx"
+   │   │   └── answered + partner ale bez lea → "Rozmowa: {partner.name}"
+   │   ├── First-call ownership: answered outbound + partner bez user_id
    │   │   → partner.sudo().write({'user_id': user.id})
-   │   ├── Створення zadarma.call (UNIQUE call_id constraint)
-   │   ├── Chatter post на target (lead або partner)
-   │   ├── Missed → mail.activity «Передзвонити» (idempotent via zadarma_call_id)
+   │   ├── Utworzenie zadarma.call (UNIQUE call_id constraint)
+   │   ├── Chatter post na target (lead lub partner)
+   │   ├── Missed → mail.activity «Oddzwoń» (idempotent przez zadarma_call_id)
    │   └── _compute_color → spam / voicemail / orphan / manager / neutral
    │
-   ├── NOTIFY_OUT_END (outbound з PBX-internal):
-   │   └── Та сама логіка, з sip = data['internal']
+   ├── NOTIFY_OUT_END (outbound z PBX-internal):
+   │   └── Ta sama logika, z sip = data['internal']
    │
    └── NOTIFY_RECORD:
-       ├── _zadarma_fetch_recording_url(call_id, pbx_call_id) → temporary URL
+       ├── _zadarma_fetch_recording_url(call_id, pbx_call_id) → tymczasowy URL
        ├── _zadarma_download_recording → ir.attachment (permanent)
        └── call.write({'recording_url': '/web/content/...'})
-6. Повернення 200 OK
+6. Zwrot 200 OK
 ```
 
 ---
 
-## Click-to-Call Flow (технічно)
+## Click-to-Call Flow (technicznie)
 
 ```
-1. Користувач натискає кнопку Дзвінок у формі res.partner
-   (button name="action_zadarma_call" у partner_lead_views.xml)
+1. Użytkownik klika przycisk Zadzwoń w formularzu res.partner
+   (button name="action_zadarma_call" w partner_lead_views.xml)
 2. Backend: res.partner.action_zadarma_call() (models/res_partner.py):
-   a. Визначення абонента: user.zadarma_primary_extension
+   a. Określenie abonenta: user.zadarma_primary_extension
       (fallback → legacy user.zadarma_internal_number)
-   b. Визначення одержувача: '+' + цифри з self.phone / self.mobile
-   c. Побудова HMAC-SHA1 підпису (key:signature у заголовку Authorization)
+   b. Określenie odbiorcy: '+' + cyfry z self.phone / self.mobile
+   c. Budowa podpisu HMAC-SHA1 (key:signature w nagłówku Authorization)
    d. GET https://api.zadarma.com/v1/request/callback/?from=<ext>&to=<phone>&sip=<ext>
 3. Zadarma Callback API:
-   a. Ініціює дзвінок на SIP-внутрішній номер менеджера
-   b. При відповіді менеджера → з'єднує з PSTN одержувача
-4. Слідує звичайний webhook-ланцюжок через NOTIFY_OUT_END (direction='out')
+   a. Inicjuje połączenie na SIP-wewnętrzny numer menedżera
+   b. Po odebraniu przez menedżera → łączy z PSTN odbiorcy
+4. Następuje zwykły łańcuch webhook przez NOTIFY_OUT_END (direction='out')
 ```
 
 ---
 
-## Локальна розробка
+## Rozwój lokalny
 
 ```bash
 git clone https://github.com/fayna-digital/fayna-zadarma-odoo.git
 cd zadarma-odoo
 
-# Тимчасовий Odoo з підключеним модулем:
+# Tymczasowe Odoo z podłączonym modułem:
 docker run -d --name test_odoo -v $(pwd)/..:/mnt/custom-addons \
     -p 8069:8069 odoo:17
 
-# Симуляція webhook:
+# Symulacja webhook:
 curl -X POST http://localhost:8069/zadarma/webhook \
     -d 'event=NOTIFY_START&call_start=2026-01-01+12:00:00&caller_id=+48123456789&called_did=+48987654321'
 ```
 
 ---
 
-## Усунення несправностей
+## Rozwiązywanie problemów
 
-| Помилка | Причина | Виправлення |
+| Błąd | Przyczyna | Naprawa |
 |-------|-------|-----|
-| Webhook не надходить | Публічний URL недоступний з Zadarma | `curl -vI https://<odoo>.com/zadarma/webhook` ззовні; перевірте SSL / firewall |
-| Перевірка підпису не вдається | Невідповідність webhook secret | Синхронізуйте secret між налаштуваннями Odoo та Zadarma (точна відповідність, без пробілів) |
-| Запис не прикріплюється | NOTIFY_RECORD не увімкнено АБО тариф не включає запис | my.zadarma.com → Webhooks → увімкніть NOTIFY_RECORD; перевірте тариф |
-| Завантаження запису не вдається | Фільтр `allowed_ips` Zadarma блокує VPS | Додайте IP вашого Odoo VPS до whitelist API на my.zadarma.com |
-| Click-to-call нічого не робить | Менеджеру не призначено внутрішній номер / не налаштовано в АТС | Налаштування → Користувачі → менеджер → встановіть `Внутрішній номер Zadarma`; перевірте в АТС |
-| SMS не доставляється | Неправильний формат телефону (потрібен E.164 `+XX...`) | Нормалізуйте через `zadarma.call._normalize_phone(phone)` |
-| Помилки 429 при масовому імпорті | Ліміт API Zadarma (~60 запитів/хв) | Майстер вже ділить на чанки по 50; якщо ліміт все ще перевищується — збільшіть інтервал паузи в `zadarma_import.py` |
+| Webhook nie przychodzi | Publiczny URL niedostępny z Zadarma | `curl -vI https://<odoo>.com/zadarma/webhook` z zewnątrz; sprawdź SSL / firewall |
+| Weryfikacja podpisu nie przechodzi | Niezgodność webhook secret | Zsynchronizuj secret między ustawieniami Odoo a Zadarma (dokładna zgodność, bez spacji) |
+| Nagranie się nie dołącza | NOTIFY_RECORD nie włączony LUB taryfa nie obejmuje nagrywania | my.zadarma.com → Webhooks → włącz NOTIFY_RECORD; sprawdź taryfę |
+| Pobieranie nagrania nie działa | Filtr `allowed_ips` Zadarma blokuje VPS | Dodaj IP Twojego VPS Odoo do whitelist API na my.zadarma.com |
+| Click-to-call nic nie robi | Menedżerowi nie przypisano wewnętrznego numeru / nie skonfigurowano w centrali | Ustawienia → Użytkownicy → menedżer → ustaw `Wewnętrzny numer Zadarma`; sprawdź w centrali |
+| SMS nie jest dostarczany | Niepoprawny format telefonu (wymagany E.164 `+XX...`) | Normalizuj przez `zadarma.call._normalize_phone(phone)` |
+| Błędy 429 przy imporcie masowym | Limit API Zadarma (~60 żądań/min) | Wizard już dzieli na chunki po 50; jeśli limit nadal przekraczany — zwiększ interwał pauzy w `zadarma_import.py` |
 
 ---
 
-## Доступ
+## Dostęp
 
-Модуль оголошує дві власні групи (`security/zadarma_security.xml`):
+Moduł deklaruje dwie własne grupy (`security/zadarma_security.xml`):
 
-| Група | XML id | Розширює |
+| Grupa | XML id | Rozszerza |
 |-------|--------|----------|
 | User | `zadarma_odoo.group_zadarma_user` | `base.group_user` |
 | Administrator | `zadarma_odoo.group_zadarma_admin` | `group_zadarma_user` (+ `base.user_root`, `base.user_admin`) |
 
-Права доступу до моделей (`security/ir.model.access.csv`) прив'язані до стандартних Odoo-груп, **не** до груп sales_team:
+Prawa dostępu do modeli (`security/ir.model.access.csv`) są powiązane ze standardowymi grupami Odoo, **nie** z grupami sales_team:
 
-- **`base.group_user`** (будь-який внутрішній користувач):
-  - `zadarma.call` — тільки читання
-  - `zadarma.dashboard`, `res.users.zadarma.extension` — читання
-- **`base.group_system`** (Settings / адміністратор):
-  - `zadarma.call` — повний доступ (read/write/create/unlink)
-  - `zadarma.import` — майстер масового імпорту
-  - `res.users.zadarma.extension` — повний доступ (мапінг внутрішніх номерів)
+- **`base.group_user`** (dowolny wewnętrzny użytkownik):
+  - `zadarma.call` — tylko odczyt
+  - `zadarma.dashboard`, `res.users.zadarma.extension` — odczyt
+- **`base.group_system`** (Settings / administrator):
+  - `zadarma.call` — pełny dostęp (read/write/create/unlink)
+  - `zadarma.import` — wizard importu masowego
+  - `res.users.zadarma.extension` — pełny dostęp (mapowanie wewnętrznych numerów)
 
-Multi-company видимість дзвінків забезпечує global `ir.rule` `zadarma_call_company_rule`
+Multi-company widoczność połączeń zapewnia global `ir.rule` `zadarma_call_company_rule`
 (`['|', ('company_id','=',False), ('company_id','in',company_ids)]`).
 
-Облікові дані Zadarma (`res.company.zadarma_api_secret`) доступні лише користувачам із доступом до налаштувань компанії.
+Dane uwierzytelniające Zadarma (`res.company.zadarma_api_secret`) są dostępne tylko użytkownikom z dostępem do ustawień firmy.
 
 ---
 
-## Дорожня карта — Міграція на адаптер-патерн
+## Roadmap — Migracja na adapter-pattern
 
-Цей модуль планується рефакторити за adapter pattern (ADR-003, внутрішня документація архітектури Fayna Digital):
+Ten moduł planowany jest do refaktoryzacji wg adapter pattern (ADR-003, wewnętrzna dokumentacja architektury Fayna Digital):
 
 ```
-Майбутній стан:
-  fayna_telephony_base (абстрактно: модель дзвінка, контракт провайдера)
-    ├── fayna_telephony_zadarma  (цей модуль, перейменування)
-    ├── fayna_telephony_binotel  (майбутнє)
-    ├── fayna_telephony_ringostat (майбутнє)
-    └── fayna_telephony_kyivstar (майбутнє)
+Przyszły stan:
+  fayna_telephony_base (abstrakcyjnie: model połączenia, kontrakt providera)
+    ├── fayna_telephony_zadarma  (ten moduł, zmiana nazwy)
+    ├── fayna_telephony_binotel  (przyszłość)
+    ├── fayna_telephony_ringostat (przyszłość)
+    └── fayna_telephony_kyivstar (przyszłość)
 ```
 
-Тригер для рефакторингу: коли клієнт запросить інший провайдер. Зараз не блокує.
+Trigger do refaktoryzacji: gdy klient poprosi o innego providera. Obecnie nie blokuje.
 
 ---
 
-## Екосистема модулів
+## Ekosystem modułów
 
-| Суміжний модуль | Роль |
+| Moduł pokrewny | Rola |
 |----------------|------|
-| [fayna-sendpulse-odoo](https://github.com/fayna-digital/fayna-sendpulse-odoo) | Суміжний месенджер (обидва потрапляють до Odoo CRM) |
-| [fayna-omnichannel-bridge](https://github.com/fayna-digital/fayna-omnichannel-bridge) | Omnichannel-агрегатор (голос поки окремий канал, не через міст) |
-| [campscout-management](https://github.com/VladSh77/campscout-management) | Використовує для вхідних sales-дзвінків CampScout |
+| [fayna-sendpulse-odoo](https://github.com/fayna-digital/fayna-sendpulse-odoo) | Pokrewny messenger (oba trafiają do Odoo CRM) |
+| [fayna-omnichannel-bridge](https://github.com/fayna-digital/fayna-omnichannel-bridge) | Agregator omnichannel (głos na razie osobny kanał, nie przez most) |
+| [campscout-management](https://github.com/VladSh77/campscout-management) | Używa do przychodzących połączeń sprzedażowych CampScout |
 
-Детальна архітектурна документація — у внутрішньому репозиторії Fayna Digital (приватний).
-
----
-
-## Ліцензія
-
-**LGPL-3.0** — дивіться [LICENSE](LICENSE) та [NOTICE.md](NOTICE.md). © Fayna Digital.
+Szczegółowa dokumentacja architektoniczna — w wewnętrznym repozytorium Fayna Digital (prywatne).
 
 ---
 
-*Розроблено [Fayna Digital](https://www.fayna.agency) · Volodymyr Shevchenko*
+## Licencja
+
+**LGPL-3.0** — patrz [LICENSE](LICENSE) oraz [NOTICE.md](NOTICE.md). © Fayna Digital.
+
+---
+
+*Opracowane przez [Fayna Digital](https://www.fayna.agency) · Volodymyr Shevchenko*
