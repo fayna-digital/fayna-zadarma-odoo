@@ -14,7 +14,7 @@
 
 ```bash
 cd /opt/<client>/custom-addons
-sudo -u \#1000 git clone https://github.com/VladSh77/zadarma-odoo.git zadarma_odoo
+sudo -u \#1000 git clone https://github.com/fayna-digital/fayna-zadarma-odoo.git zadarma_odoo
 ```
 
 ### Через scp

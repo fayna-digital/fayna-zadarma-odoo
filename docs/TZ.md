@@ -135,4 +135,4 @@ zadarma-odoo/
 - HMAC enforce — коли вмикати (потрібні 1-2 дні чистих прод-логів).
 
 ## Зв'язки
-docs/PLAN.md · docs/ARCHITECTURE.md · docs/RUNBOOK.md · Repo: `fayna-digital/zadarma-odoo`
+docs/PLAN.md · docs/ARCHITECTURE.md · docs/RUNBOOK.md · Repo: `fayna-digital/fayna-zadarma-odoo`

@@ -123,7 +123,7 @@ zadarma-odoo/
 
 ```bash
 cd /opt/<client>/custom-addons
-git clone https://github.com/VladSh77/zadarma-odoo.git zadarma_odoo
+git clone https://github.com/fayna-digital/fayna-zadarma-odoo.git zadarma_odoo
 ```
 
 ### 2. Встановлення модуля
@@ -279,7 +279,7 @@ docker restart <client>_web
 ## Локальна розробка
 
 ```bash
-git clone https://github.com/VladSh77/zadarma-odoo.git
+git clone https://github.com/fayna-digital/fayna-zadarma-odoo.git
 cd zadarma-odoo
 
 # Тимчасовий Odoo з підключеним модулем:
