@@ -354,8 +354,8 @@ Multi-company видимість дзвінків забезпечує global `i
 
 | Суміжний модуль | Роль |
 |----------------|------|
-| [fayna-sendpulse-odoo](https://github.com/VladSh77/fayna-sendpulse-odoo) | Суміжний месенджер (обидва потрапляють до Odoo CRM) |
-| [omnichannel-bridge](https://github.com/VladSh77/omnichannel-bridge) | Omnichannel-агрегатор (голос поки окремий канал, не через міст) |
+| [fayna-sendpulse-odoo](https://github.com/fayna-digital/fayna-sendpulse-odoo) | Суміжний месенджер (обидва потрапляють до Odoo CRM) |
+| [fayna-omnichannel-bridge](https://github.com/fayna-digital/fayna-omnichannel-bridge) | Omnichannel-агрегатор (голос поки окремий канал, не через міст) |
 | [campscout-management](https://github.com/VladSh77/campscout-management) | Використовує для вхідних sales-дзвінків CampScout |
 
 Детальна архітектурна документація — у внутрішньому репозиторії Fayna Digital (приватний).
