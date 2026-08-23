@@ -48,5 +48,20 @@ repos:
         files: ^lib/
 
   # Fayna policy: no AI co-author signature (content + commit message)
+  # Conventional Commits (commit-msg): enforce <type>(<scope>): <summary>
+  - repo: https://github.com/conventional-changelog/commitlint
+    rev: v19.3.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies: ['@commitlint/config-conventional']
   - repo: local
     hooks:
+      - id: no-ai-signature
+        name: no AI co-author signature
+        entry: bash -c '! grep -rInEi "co-authored-by|noreply@anthropic|generated with[^\n]*(claude|anthropic|gpt|copilot)" --exclude-dir=.git . && ! grep -qiE "co-authored-by|noreply@anthropic" "$1"'
+        language: system
+        stages: [commit-msg]
+        always_run: true
+        pass_filenames: false
+
