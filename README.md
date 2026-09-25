@@ -361,7 +361,7 @@ Trigger do refaktoryzacji: gdy klient poprosi o innego providera. Obecnie nie bl
 |----------------|------|
 | [fayna-sendpulse-odoo](https://github.com/fayna-digital/fayna-sendpulse-odoo) | Pokrewny messenger (oba trafiają do Odoo CRM) |
 | [fayna-omnichannel-bridge](https://github.com/fayna-digital/fayna-omnichannel-bridge) | Agregator omnichannel (głos na razie osobny kanał, nie przez most) |
-| [campscout-management](https://github.com/VladSh77/campscout-management) | Używa do przychodzących połączeń sprzedażowych CampScout |
+| [fayna-campscout](https://github.com/fayna-digital/fayna-campscout) | Używa do przychodzących połączeń sprzedażowych CampScout |
 
 Szczegółowa dokumentacja architektoniczna — w wewnętrznym repozytorium Fayna Digital (prywatne).
 
